@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const { expect }  = require('chai');
-const dragAndDropFrame = require('../../utils/dragAndDropFrame');
+const dragAndDropFrame = require('../../utils/dragAndDrop');
 
 describe("User can drag and drop image into the proper div on the sandbox web page", function() {    
 
@@ -9,7 +9,7 @@ describe("User can drag and drop image into the proper div on the sandbox web pa
 
     it('It is possible to drag and drop an image into the dedicated div', async function() {
         this.timeout(80000);
-        browser = await puppeteer.launch({headless: false, args: ['--start-maximized', '--disable-features=site-per-process']});
+        browser = await puppeteer.launch({headless: false, args: ['--start-maximized']});
         page = await browser.newPage();
         await page.setDefaultNavigationTimeout(0);
         await page.setViewport({ width: 1920, height: 1080 });
@@ -17,7 +17,7 @@ describe("User can drag and drop image into the proper div on the sandbox web pa
         const elementHandle = await page.$('iframe#iframeResult');
         const frame = await elementHandle.contentFrame();
 
-        await dragAndDropFrame(page, frame, 'img#drag1', 'div#div1');
+        await dragAndDropFrame(frame, 'img#drag1', 'div#div1');
  
         await browser.close();
     });
