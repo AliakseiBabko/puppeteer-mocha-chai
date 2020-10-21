@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const { expect }  = require('chai');
-const dragAndDrop = require('../../utils/dragAndDrop');
+const { dragAndDrop, dragAndDropHTML5 } = require('../../utils/dragAndDrop');
 let MemoryObject = require('../../utils/memory');
 
 describe("User can copy item's url by drag and drop its image to text fields", function() {
@@ -26,7 +26,7 @@ describe("User can copy item's url by drag and drop its image to text fields", f
         const originalUrl = await page.$eval('div#schema-products > div:nth-of-type(1) > .schema-product > .schema-product__part_1 > .schema-product__image > a', element => element.getAttribute('href'));
         MemoryObject.setter('result', Number(originalUrl.match(/\d+/g).join('')));
         
-        await dragAndDrop(page, 'div#schema-products > div:nth-of-type(1) > .schema-product > .schema-product__part_1 > .schema-product__image > a > img', 'div:nth-of-type(2) > .schema-filter-control__item.schema-filter__number-input.schema-filter__number-input_price');
+        await dragAndDrop(page, 'div#schema-products > div:nth-of-type(1) > .schema-product > .schema-product__part_1 > .schema-product__image > a', 'div:nth-of-type(2) > .schema-filter-control__item.schema-filter__number-input.schema-filter__number-input_price');
         await page.$eval('div:nth-of-type(1) > .schema-filter-control__item.schema-filter__number-input.schema-filter__number-input_price', el => el.click());
 
         const copiedText = await page.$eval('div:nth-of-type(2) > .schema-filter-control__item.schema-filter__number-input.schema-filter__number-input_price', element => element.getAttribute('value'));
