@@ -39,7 +39,7 @@ module.exports = {
 
     await page.evaluate(
       async (ss, ds, sb, db) => {
-        const waitTime = 1000;
+        const waitTime = 2000;
         const sleep = (milliseconds) => {
           return new Promise(resolve => setTimeout(resolve, milliseconds))
         }
@@ -53,8 +53,6 @@ module.exports = {
 
         const dataTransfer = new DataTransfer();
         dataTransfer.effectAllowed = 'all';
-        dataTransfer.dropEffect = 'none';
-        dataTransfer.files = [];
 
         source.dispatchEvent(
           new MouseEvent('mousemove', {
