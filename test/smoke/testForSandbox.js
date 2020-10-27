@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer');
-const { expect }  = require('chai');
 const { dragAndDrop, dragAndDropHTML5 } = require('../../utils/dragAndDrop');
 
 describe("User can drag and drop image into the proper div on the sandbox web page", function() {    

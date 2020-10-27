@@ -9,13 +9,14 @@
   },
   "author": "Aliaksei Babko",
   "scripts": {
-    "test": "mocha --recursive test --reporter mochawesome"
+    "test": "mocha --recursive test --reporter mochawesome --unhandled-rejections=strict"
   },
   "dependencies": {
     "chai": "^4.2.0",
     "mocha": "^8.1.3",
     "npm": "^6.14.8",
-    "puppeteer": "^5.3.1"
+    "puppeteer": "^5.3.1",
+    "resemblejs": "^3.2.5"
   },
   "devDependencies": {
     "mochawesome": "^6.1.1"
